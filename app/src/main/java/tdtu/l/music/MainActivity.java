@@ -11,11 +11,14 @@ import android.widget.ListView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     Toolbar bar;
     DrawerLayout layout;
     NavigationView navigationView;
     ListView listView;
+    List<casi> casiList = casi.getAll();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
 
         anhxa();
         actionbar();
+
+        casiAdapter adapter = new casiAdapter(casiList);
+        listView.setAdapter(adapter);
     }
 
     private void actionbar() {
@@ -42,5 +48,7 @@ public class MainActivity extends AppCompatActivity {
         layout         = findViewById(R.id.drawer_menu);
         navigationView = findViewById(R.id.navView);
         listView       = findViewById(R.id.menu);
+
+
     }
 }
